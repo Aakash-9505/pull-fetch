@@ -1,0 +1,128 @@
+Java:
+
+import java.util.*;
+
+public class PatternGenerator {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n = sc.nextInt(); // number of rows
+        int num = 1;
+
+        for (int i = 0; i < n; i++) {
+            int[] row = new int[i + 1];
+
+            // Fill the row with numbers
+            for (int j = 0; j <= i; j++) {
+                row[j] = num++;
+            }
+
+            if (i % 2 == 0) {
+                // Even row: print squares in order
+                for (int val : row) {
+                    System.out.print((val * val) + " ");
+                }
+            } else {
+                // Odd row: print cubes in reverse
+                for (int j = row.length - 1; j >= 0; j--) {
+                    System.out.print((row[j] * row[j] * row[j]) + " ");
+                }
+            }
+
+            System.out.println();
+        }
+    }
+}
+
+C++:
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n; // number of rows
+    cin>>n;
+    int num = 1;
+
+    for (int i = 0; i < n; i++) {
+        vector<int> row(i + 1);
+        
+        // Fill row with consecutive numbers
+        for (int j = 0; j <= i; ++j) {
+            row[j] = num++;
+        }
+
+        if (i % 2 == 0) {
+            // Even row: squares in order
+            for (int val : row) {
+                cout << val * val << " ";
+            }
+        } else {
+            // Odd row: cubes in reverse order
+            for (int j = row.size() - 1; j >= 0; --j) {
+                cout << row[j] * row[j] * row[j] << " ";
+            }
+        }
+
+        cout << endl;
+    }
+
+    return 0;
+}
+
+Java:
+
+import java.util.*;
+
+public class FibonacciTriangle {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int a = 1, b = 1;
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(a + " ");
+                int c = a + b;
+                a = b;
+                b = c;
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+C++:
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool isVowel(char ch) {
+    ch = tolower(ch);
+    return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
+}
+
+int main() {
+    string s, s1;
+    cin >> s;
+
+    char prev = '\0'; // to avoid repeated C or V
+
+    for (int i = 0; i < s.length(); i++) {
+        char ch = tolower(s[i]);
+
+        if (!isalpha(ch)) continue; // skip non-letters
+
+        char curr = isVowel(ch) ? 'C' : 'V';
+
+        if (curr != prev) {
+            s1 += curr;
+            prev = curr;
+        }
+    }
+
+    cout << s1 << endl;
+    return 0;
+}
